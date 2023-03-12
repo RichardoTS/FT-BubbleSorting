@@ -60,7 +60,7 @@ function deckBuilder() {
     return theSuits;
   }
 }
-let result = getSuits();
+//<---- eliminar comentario let result = getSuits();
 
 uppSuit.innerHTML = result;
 mdlNum.innerHTML = getRandomInt();
