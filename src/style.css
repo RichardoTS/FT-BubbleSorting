@@ -1,1 +1,8 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+body {
+  background: rgb(90, 165, 255);
+}
+#uppSuit {
+  background: black;
+  color: white;
+}
