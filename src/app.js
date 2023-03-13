@@ -39,13 +39,14 @@ window.onload = function() {
       suit.classList = "uppSuit";
       suit2.classList = "btmSuit";
 
-      let result = getSuits();
-      suit.innerHTML = result;
-      suit2.innerHTML = result;
+      let crdSuit = getSuits();
+      // let colour = giveColour();
+      suit.innerHTML = crdSuit;
+      suit2.innerHTML = crdSuit;
       let value = getRandomInt();
-      numb.innerHTML = value;
+      numb.innerHTML = giveValue(value);
 
-      cards.push({ value, result });
+      cards.push({ value, crdSuit });
       console.log(cards);
 
       cntnr.appendChild(suit);
@@ -82,17 +83,25 @@ window.onload = function() {
   console.log("If you are reading this.. well hello!");
 };
 
-// crear una funcion con el if
-// if (randomNumber == 1) {
-//   return "A";
-// } else if (randomNumber == 11) {
-//   return "J";
-// } else if (randomNumber == 12) {
-//   return "Q";
-// } else if (randomNumber == 13) {
-//   return "K";
+function giveValue(value) {
+  if (value == 1) return "A";
+  if (value == 11) return "J";
+  if (value == 12) return "Q";
+  if (value == 13) return "K";
+  return value;
+}
+// function giveColour(crdSuit) {
+//   if (crdSuit == "♦" || crdSuit == "♥") return (style.color = "red");
+//   return crdSuit;
 // }
-// return randomNumber;
+// if (result == "♦" || result == "♥") {
+//   upperSuit.style.color = "red";
+//   bottmSuit.style.color = "red";
+//   middleNum.style.color = "red";
+// } else {
+//   upperSuit.style.color = "black";
+//   bottmSuit.style.color = "black";
+//   middleNum.style.color = "black";
 // }
 
 // getrandomint generar el numero random
@@ -102,6 +111,9 @@ function getRandomInt() {
 
 function getSuits() {
   let theSuits = getSuit(Math.floor(Math.random() * 4) + 1);
+  // if (theSuits == "♦" || theSuits == "♥") {
+  //   theSuits.style.color = "red";
+  // }
   return theSuits;
 }
 
@@ -117,20 +129,11 @@ function getSuit(suitNumber = 0) {
       return "♣";
   }
 }
-// if (result == "♦" || result == "♥") {
-//   upperSuit.style.color = "red";
-//   bottmSuit.style.color = "red";
-//   middleNum.style.color = "red";
-// } else {
-//   upperSuit.style.color = "black";
-//   bottmSuit.style.color = "black";
-//   middleNum.style.color = "black";
-// }
 
-let result = getSuits();
+let crdSuit = getSuits();
 let int = getRandomInt();
 
-console.log("Is this your card? " + "The " + int + " of " + result);
+console.log("Is this your card? " + "The " + int + " of " + crdSuit);
 
 const bubbleSort = arr => {
   let wall = arr.length - 1; //we start the wall at the end of the array
