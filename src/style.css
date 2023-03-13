@@ -1,13 +1,21 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 body {
   background: rgb(90, 165, 255);
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
-#uppSuit {
+.crdContainer {
+  background: white;
+  height: 90px;
+  width: 70px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+/* .uppSuit {
   background: black;
   color: white;
-}
-#btmSuit {
-  background: black;
-  color: white;
+}*/
+.btmSuit {
+  display: flex;
+  align-items: end;
 }
