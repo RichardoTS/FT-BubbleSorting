@@ -59,6 +59,7 @@ window.onload = function() {
 
   btnSort.addEventListener("click", () => {
     crdLog.innerHTML = "";
+
     let cntnr = document.createElement("div");
 
     console.log("Your cards have been sorted");
@@ -66,6 +67,7 @@ window.onload = function() {
 
     cntnr.innerHTML = crdSort;
     crdLog.appendChild(cntnr);
+    cards = [];
   });
 
   //write your code here
@@ -121,7 +123,7 @@ let result = getSuits();
 let int = getRandomInt();
 
 console.log(
-  "Is this your card? " + "Suit: " + int + ", and the number: " + result
+  "Is this your card? " + "Suit: " + result + ", and the number: " + int
 );
 
 const bubbleSort = arr => {
