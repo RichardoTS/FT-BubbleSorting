@@ -11,19 +11,21 @@ let btnSort = document.getElementById("btnSort");
 let btnClear = document.getElementById("btnClear");
 let crdContainer = document.getElementById("crdContainer");
 let crdLog = document.getElementById("crdLog");
-
+// [{nombre: "asdf", apellido: "asdf1"}] to consider
 let cards = [];
 
 window.onload = function() {
   btnClear.addEventListener("click", () => {
     crdContainer.innerHTML = "";
     crdLog.innerHTML = "";
+    cards = [];
     console.clear();
   });
 
   btnDraw.addEventListener("click", () => {
     crdContainer.innerHTML = "";
     crdLog.innerHTML = "";
+    console.log("These are your cards");
     const numCards = parseInt(inpt.value);
 
     for (let i = 0; i < numCards; i++) {
@@ -40,7 +42,11 @@ window.onload = function() {
       let result = getSuits();
       suit.innerHTML = result;
       suit2.innerHTML = result;
-      numb.innerHTML = getRandomInt();
+      let value = getRandomInt();
+      numb.innerHTML = value;
+
+      cards.push({ value, result });
+      console.log(cards);
 
       cntnr.appendChild(suit);
       cntnr.appendChild(numb);
@@ -53,25 +59,40 @@ window.onload = function() {
 
   btnSort.addEventListener("click", () => {
     crdLog.innerHTML = "";
-    bubbleSort(cards);
+    let cntnr = document.createElement("div");
+
+    console.log("Your cards have been sorted");
+    let crdSort = bubbleSort(cards);
+
+    cntnr.innerHTML = crdSort;
+    crdLog.appendChild(cntnr);
   });
 
   //write your code here
   console.log("If you are reading this.. well hello!");
 };
 
+// crear una funcion con el if
+// if (randomNumber == 1) {
+//   return "A";
+// } else if (randomNumber == 11) {
+//   return "J";
+// } else if (randomNumber == 12) {
+//   return "Q";
+// } else if (randomNumber == 13) {
+//   return "K";
+// }
+// return randomNumber;
+// }
+
+// getrandomint generar el numero random
 function getRandomInt() {
-  let randomNumber = Math.floor(Math.random() * 13) + 1;
-  if (randomNumber == 1) {
-    return "A";
-  } else if (randomNumber == 11) {
-    return "J";
-  } else if (randomNumber == 12) {
-    return "Q";
-  } else if (randomNumber == 13) {
-    return "K";
-  }
-  return randomNumber;
+  return Math.floor(Math.random() * 13) + 1;
+}
+
+function getSuits() {
+  let theSuits = getSuit(Math.floor(Math.random() * 4) + 1);
+  return theSuits;
 }
 
 function getSuit(suitNumber = 0) {
@@ -86,10 +107,6 @@ function getSuit(suitNumber = 0) {
       return "♣";
   }
 }
-function getSuits() {
-  let theSuits = getSuit(Math.floor(Math.random() * 4) + 1);
-  return theSuits;
-}
 // if (result == "♦" || result == "♥") {
 //   upperSuit.style.color = "red";
 //   bottmSuit.style.color = "red";
@@ -103,7 +120,9 @@ function getSuits() {
 let result = getSuits();
 let int = getRandomInt();
 
-console.log("The suit is: " + result + ", and the number is: " + int);
+console.log(
+  "Is this your card? " + "Suit: " + int + ", and the number: " + result
+);
 
 const bubbleSort = arr => {
   let wall = arr.length - 1; //we start the wall at the end of the array
@@ -111,7 +130,7 @@ const bubbleSort = arr => {
     let index = 0;
     while (index < wall) {
       //compare the adjacent positions, if the right one is bigger, we have to swap
-      if (arr[index] > arr[index + 1]) {
+      if (arr[index].value > arr[index + 1].value) {
         let aux = arr[index];
         arr[index] = arr[index + 1];
         arr[index + 1] = aux;
@@ -120,5 +139,16 @@ const bubbleSort = arr => {
     }
     wall--; //decrease the wall for optimization
   }
+  console.log(cards);
   return arr;
 };
+
+// let name = "";
+// let lastName = "";
+// let fullName = { name, lastName }; // {name: name, lastName: lastName}
+// console.log(fullName);
+
+// let variable = "name";
+// let person = {};
+// person[variable] = "Ri T";
+// console.log(person);
