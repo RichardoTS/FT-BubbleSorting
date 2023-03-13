@@ -18,9 +18,12 @@ window.onload = function() {
   btnClear.addEventListener("click", () => {
     crdContainer.innerHTML = "";
     crdLog.innerHTML = "";
+    console.clear();
   });
 
   btnDraw.addEventListener("click", () => {
+    crdContainer.innerHTML = "";
+    crdLog.innerHTML = "";
     const numCards = parseInt(inpt.value);
 
     for (let i = 0; i < numCards; i++) {
@@ -39,8 +42,6 @@ window.onload = function() {
       suit2.innerHTML = result;
       numb.innerHTML = getRandomInt();
 
-      // cards.push();
-
       cntnr.appendChild(suit);
       cntnr.appendChild(numb);
       cntnr.appendChild(suit2);
@@ -50,18 +51,15 @@ window.onload = function() {
     }
   });
 
-  // btnDraw = () => {
-  //   btnDraw(inpt.value);
-  // };
-
-  btnSort.addEventListener("click", () => {});
+  btnSort.addEventListener("click", () => {
+    crdLog.innerHTML = "";
+    bubbleSort(cards);
+  });
 
   //write your code here
   console.log("If you are reading this.. well hello!");
 };
 
-// function deckBuilder() {
-// }
 function getRandomInt() {
   let randomNumber = Math.floor(Math.random() * 13) + 1;
   if (randomNumber == 1) {
@@ -107,20 +105,20 @@ let int = getRandomInt();
 
 console.log("The suit is: " + result + ", and the number is: " + int);
 
-// const bubbleSort = arr => {
-//   let wall = arr.length - 1; //we start the wall at the end of the array
-//   while (wall > 0) {
-//     let index = 0;
-//     while (index < wall) {
-//       //compare the adjacent positions, if the right one is bigger, we have to swap
-//       if (arr[index] > arr[index + 1]) {
-//         let aux = arr[index];
-//         arr[index] = arr[index + 1];
-//         arr[index + 1] = aux;
-//       }
-//       index++;
-//     }
-//     wall--; //decrease the wall for optimization
-//   }
-//   return arr;
-// };
+const bubbleSort = arr => {
+  let wall = arr.length - 1; //we start the wall at the end of the array
+  while (wall > 0) {
+    let index = 0;
+    while (index < wall) {
+      //compare the adjacent positions, if the right one is bigger, we have to swap
+      if (arr[index] > arr[index + 1]) {
+        let aux = arr[index];
+        arr[index] = arr[index + 1];
+        arr[index + 1] = aux;
+      }
+      index++;
+    }
+    wall--; //decrease the wall for optimization
+  }
+  return arr;
+};
