@@ -11,7 +11,7 @@ let btnSort = document.getElementById("btnSort");
 let btnClear = document.getElementById("btnClear");
 let crdContainer = document.getElementById("crdContainer");
 let crdLog = document.getElementById("crdLog");
-// [{nombre: "asdf", apellido: "asdf1"}] to consider
+
 let cards = [];
 
 window.onload = function() {
@@ -114,17 +114,16 @@ function giveValue(value) {
 //   middleNum.style.color = "black";
 // }
 
-// getrandomint generar el numero random
 function getRandomInt() {
   return Math.floor(Math.random() * 13) + 1;
 }
 
 function getSuits() {
-  let theSuits = getSuit(Math.floor(Math.random() * 4) + 1);
+  return getSuit(Math.floor(Math.random() * 4) + 1);
   // if (theSuits == "♦" || theSuits == "♥") {
   //   theSuits.style.color = "red";
   // }
-  return theSuits;
+  // return theSuits;
 }
 
 function getSuit(suitNumber = 0) {
@@ -156,6 +155,9 @@ const bubbleSort = arr => {
         let aux = arr[index];
         arr[index] = arr[index + 1];
         arr[index + 1] = aux;
+        const p = document.createElement("p");
+        p.innerHTML = counter;
+        crdLog.appendChild(p);
         counter++;
       }
       index++;
