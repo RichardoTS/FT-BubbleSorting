@@ -61,6 +61,14 @@ window.onload = function() {
     crdLog.innerHTML = "";
 
     let cntnr = document.createElement("div");
+    let suit = document.createElement("div");
+    let suit2 = document.createElement("div");
+    let numb = document.createElement("div");
+
+    cntnr.classList = "crdContainer d-flex justify-content-around shadow";
+    numb.classList = "d-flex align-items-center";
+    suit.classList = "uppSuit";
+    suit2.classList = "btmSuit";
 
     console.log("Your cards have been sorted");
     let crdSort = bubbleSort(cards);
@@ -122,9 +130,7 @@ function getSuit(suitNumber = 0) {
 let result = getSuits();
 let int = getRandomInt();
 
-console.log(
-  "Is this your card? " + "Suit: " + result + ", and the number: " + int
-);
+console.log("Is this your card? " + "The " + int + " of " + result);
 
 const bubbleSort = arr => {
   let wall = arr.length - 1; //we start the wall at the end of the array
