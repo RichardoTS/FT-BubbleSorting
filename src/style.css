@@ -10,7 +10,11 @@ body {
   border-radius: 5px;
   border: 1px solid black;
 }
-
+#crdLog {
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+}
 /* .uppSuit {
   background: black;
   color: white;

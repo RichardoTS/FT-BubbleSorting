@@ -63,6 +63,7 @@ window.onload = function() {
 
     console.log("Your cards have been sorted");
     const sortedCards = bubbleSort(cards);
+    // const newCards = bubbleSort(newArray);
 
     sortedCards.forEach(card => {
       let cntnr = document.createElement("div");
@@ -85,6 +86,28 @@ window.onload = function() {
 
       crdLog.appendChild(cntnr);
     });
+    console.log(sortedCards);
+    // newCards.forEach(card => {
+    //   let cntnr = document.createElement("div");
+    //   let suit = document.createElement("div");
+    //   let suit2 = document.createElement("div");
+    //   let numb = document.createElement("div");
+
+    //   cntnr.classList = "crdContainer d-flex justify-content-around shadow";
+    //   numb.classList = "d-flex align-items-center";
+    //   suit.classList = "uppSuit";
+    //   suit2.classList = "btmSuit";
+
+    //   suit.innerHTML = card.crdSuit;
+    //   suit2.innerHTML = card.crdSuit;
+    //   numb.innerHTML = giveValue(card.value);
+
+    //   cntnr.appendChild(suit);
+    //   cntnr.appendChild(numb);
+    //   cntnr.appendChild(suit2);
+
+    //   crdLog.appendChild(cntnr);
+    // });
 
     cards = [];
   });
@@ -144,28 +167,55 @@ let int = getRandomInt();
 
 console.log("Is this your card? " + "The " + int + " of " + crdSuit);
 
+let newArray = [];
+
 const bubbleSort = arr => {
   let wall = arr.length - 1; //we start the wall at the end of the array
   let counter = 0;
   while (wall > 0) {
     let index = 0;
+    let row = document.createElement("div");
     while (index < wall) {
       //compare the adjacent positions, if the right one is bigger, we have to swap
       if (arr[index].value > arr[index + 1].value) {
         let aux = arr[index];
         arr[index] = arr[index + 1];
         arr[index + 1] = aux;
-        const p = document.createElement("p");
-        p.innerHTML = counter;
-        crdLog.appendChild(p);
+        let cntnr = document.createElement("div");
+        let suit = document.createElement("div");
+        let suit2 = document.createElement("div");
+        let numb = document.createElement("div");
+
+        cntnr.classList = "crdContainer d-flex justify-content-around shadow";
+        numb.classList = "d-flex align-items-center";
+        suit.classList = "uppSuit";
+        suit2.classList = "btmSuit";
+
+        suit.innerHTML = arr[index].crdSuit;
+        suit2.innerHTML = arr[index].crdSuit;
+        numb.innerHTML = giveValue(arr[index].value);
+
+        cntnr.appendChild(suit);
+        cntnr.appendChild(numb);
+        cntnr.appendChild(suit2);
+
+        row.appendChild(cntnr);
+        // let p = document.createElement("div");
+        // p.classList.add("row");
+        // p.innerHTML = counter;
+        // crdLog.appendChild(p);
         counter++;
+        newArray.push(arr[index]);
       }
+      // console.log(newArray);
       index++;
     }
+    crdLog.appendChild(row);
     wall--; //decrease the wall for optimization
   }
   console.log(`Cards sorted in ${counter} iterations`);
-  console.log(cards);
+  // console.log(cards);
+  console.log(newArray);
   return arr;
 };
 
