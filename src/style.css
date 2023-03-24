@@ -12,7 +12,7 @@ body {
 }
 #crdLog {
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   flex-wrap: wrap;
 }
 /* .uppSuit {
