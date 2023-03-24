@@ -115,10 +115,10 @@ const bubbleSort = arr => {
         let aux = clone[index];
         clone[index] = clone[index + 1];
         clone[index + 1] = aux;
-        const h4 = document.createElement("h4");
-        h4.classList = "d-flex";
-        h4.innerHTML = counter;
-        crdLog.appendChild(h4);
+        const h5 = document.createElement("h5");
+        h5.classList = "d-flex";
+        h5.innerHTML = counter;
+        crdLog.appendChild(h5);
         counter++;
 
         // Draw the cards after each swap
