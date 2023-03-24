@@ -71,7 +71,7 @@ btnSort.addEventListener("click", () => {
 
 const drawRow = cardsArray => {
   let row = document.createElement("div");
-  row.classList = "d-flex mt-2";
+  row.classList = "d-flex my-2";
 
   for (let card of cardsArray) {
     let cntnr = document.createElement("div");
@@ -107,6 +107,7 @@ const bubbleSort = arr => {
   crdLog.innerHTML = "";
   const clone = arr.map(card => ({ ...card }));
   let wall = clone.length - 1;
+  let counter = 0;
   while (wall > 0) {
     let index = 0;
     while (index < wall) {
@@ -114,9 +115,15 @@ const bubbleSort = arr => {
         let aux = clone[index];
         clone[index] = clone[index + 1];
         clone[index + 1] = aux;
+        const h4 = document.createElement("h4");
+        h4.classList = "d-flex";
+        h4.innerHTML = counter;
+        crdLog.appendChild(h4);
+        counter++;
 
         // Draw the cards after each swap
         const row = drawRow(clone);
+        // console.log(row);
         crdLog.appendChild(row);
       }
       index++;
